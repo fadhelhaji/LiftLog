@@ -11,7 +11,7 @@ const session = require('express-session')
 const isSignIn = require('./middleware/isSignIn')
 const {MongoStore} = require("connect-mongo");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-const foodRoute = require('./models/')
+const mealsCtrl = require('./controllers/meals.js')
 
 // Middleware
 app.use(express.static('public')); //all static files are in the public folder
@@ -24,7 +24,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URL,
+      mongoUrl: process.env.MONGODB_URI,
     }),
   })
 );
@@ -34,7 +34,7 @@ app.use(passUserToView);
 
 async function conntectToDB(){ //connection to the database
     try{
-        await mongoose.connect(process.env.MONGODB_URL)
+        await mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to Database")
     }
     catch(error){
@@ -50,19 +50,16 @@ conntectToDB() // connect to database
 
 
 
-// Routes go here
-app.get('/', async (req,res)=>{
-    const user = req.session.user;
-    res.render('index.ejs')    
-})
+app.use(passUserToView);
 
+//Public routes
+app.get('/', (req, res) => res.render('index.ejs'));
+app.use('/auth', authCtrl);
 
-app.use('/auth', authCtrl)
-
-app.use(isSignIn)
-
-app.use('/dashboard', foodRoute)
-
+//Protected routes
+app.use(isSignIn);
+app.get('/dashboard', (req, res) => res.render('appDashboard/dashboard.ejs'));
+app.use('/meals', mealsCtrl);
 
 
 

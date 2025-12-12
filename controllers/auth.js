@@ -49,7 +49,7 @@ router.post('/sign-in', async (req, res)=>{
         _id: userInDataBase._id
     } 
     req.session.save(() => {
-    res.render("/");
+    res.redirect("/dashboard");
 })})
 
 router.get('/sign-out', async (req, res)=>{

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Meals</title>
+</head>
+<body>
+    <%- include('../partials/_mealsNavbar.ejs') %>
+    <% foundMeals.forEach(meal => { %>
+  <div class="meal-card">
+    <h3><%= meal.mealName %></h3>
+    <p>Protein: <%= meal.protein %> g</p>
+    <p>Carbs: <%= meal.carbs %> g</p>
+    <p>Fat: <%= meal.fat %> g</p>
+
+    <a href="/meals/<%= meal._id %>/edit">Edit</a>
+
+    <form action="/meals/<%= meal._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+    <% }); %>
+
+    <button><a href="/meals/new">Create new meal</a></button>
+</body>
+</html>
