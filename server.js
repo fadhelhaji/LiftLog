@@ -12,6 +12,7 @@ const isSignIn = require('./middleware/isSignIn')
 const {MongoStore} = require("connect-mongo");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const mealsCtrl = require('./controllers/meals.js')
+const exercisesCtrl = require('./controllers/exercises.js')
 
 // Middleware
 app.use(express.static('public')); //all static files are in the public folder
@@ -60,6 +61,7 @@ app.use('/auth', authCtrl);
 app.use(isSignIn);
 app.get('/dashboard', (req, res) => res.render('appDashboard/dashboard.ejs'));
 app.use('/meals', mealsCtrl);
+app.use('/exercises', exercisesCtrl);
 
 
 
