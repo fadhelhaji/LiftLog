@@ -13,6 +13,8 @@ const {MongoStore} = require("connect-mongo");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const mealsCtrl = require('./controllers/meals.js')
 const exercisesCtrl = require('./controllers/exercises.js')
+const publicCtrl = require('./controllers/public.js');
+
 
 // Middleware
 app.use(express.static('public')); //all static files are in the public folder
@@ -30,9 +32,6 @@ app.use(
   })
 );
 
-app.use(passUserToView);
-
-
 async function conntectToDB(){ //connection to the database
     try{
         await mongoose.connect(process.env.MONGODB_URI)
@@ -45,38 +44,19 @@ async function conntectToDB(){ //connection to the database
 conntectToDB() // connect to database
 
 
-
-
-
-
-
-
 app.use(passUserToView);
 
-//Public routes
+// Public routes
+app.use('/public', publicCtrl);
 app.get('/', (req, res) => res.render('index.ejs'));
 app.use('/auth', authCtrl);
 
-//Protected routes
+// Protected routes
 app.use(isSignIn);
 app.get('/dashboard', (req, res) => res.render('appDashboard/dashboard.ejs'));
 app.use('/meals', mealsCtrl);
 app.use('/exercises', exercisesCtrl);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.listen(3000,()=>{
     console.log('App is running on port 3000')
-}) // app will be waiting for requests on port 3000
+})

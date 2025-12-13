@@ -12,18 +12,18 @@ const userExercise = new Schema ({
     },
 
     sets: {
-        type: Number
+        type: Number,
     },
     reps: {
-        type: Number
+        type: Number,
     },
     weight: {
         type: Number,
     },
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+        ref: "User",
+    },
 })
 
 const Exercises = model('Exercises', userExercise)

@@ -13,7 +13,6 @@ const userData = new Schema ({
         required: true,
         unique: true
     },
-
     age: {
         type: Number
     },
@@ -22,6 +21,10 @@ const userData = new Schema ({
     },
     weight: {
         type: Number
+    },
+    isPublic: {
+        type: Boolean,
+        default: false,
     },
 })
 

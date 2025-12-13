@@ -21,10 +21,12 @@ router.post('/sign-up', async (req, res)=>{
 
     req.body.password = hashPassword;
     delete req.body.confirmPassword
+    req.body.isPublic = req.body.isPublic === 'on';
     const user =  await User.create(req.body)
     req.session.user = {
         name: user.name,
-        _id: user._id
+        _id: user._id,
+        isPublic: user.isPublic
     }
     req.session.save(() => {
     res.redirect("/");

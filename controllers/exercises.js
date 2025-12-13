@@ -4,7 +4,7 @@ const User = require("../models/user")
 const Exercises = require("../models/exercises")
 
 router.get('/', async (req, res)=>{
-    const foundExercises = await Exercises.find()
+    const foundExercises = await Exercises.find({userId: req.session.user._id})
     res.render('exercises/exercisesDashboard.ejs', {foundExercises})
 })
 

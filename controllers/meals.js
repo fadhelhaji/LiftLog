@@ -4,7 +4,7 @@ const User = require("../models/user")
 const Meals = require("../models/meals")
 
 router.get("/", async (req, res)=>{
-        const foundMeals = await Meals.find().populate('userId');
+        const foundMeals = await Meals.find({userId: req.session.user._id});
         res.render("meals/mealsDashboard.ejs", {foundMeals});
 })
 
