@@ -1,11 +1,13 @@
 <nav>
   <% if(user) { %>
+  <a href="/dashboard">Profile</a>
   <a href="/">Explore</a>
   <a href="/meals">Meals</a>
   <a href="/exercises">Exercises</a>
+  <a href="/plans/users/<%= user._id %>">View User Plans</a>
   <a href="/auth/sign-out">Sign Out</a>
   <% } else { %>
-    <a href="auth/sign-in">Sign In</a>
     <a href="auth/sign-up">Sign Up</a>
+    <a href="auth/sign-in">Sign In</a>
     <% } %>
 </nav>

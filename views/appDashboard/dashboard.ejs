@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 <body>
-        <% if (user) { %>
-              <%- include('../partials/_ifSignedInNavbar.ejs') %>
-            <h1>Welcome to the app, <%= user.name %>!</h1>
-            <!-- <a href="/auth/sign-out">Sign out</a> -->
-        <% } %>
+
+<% if (user) { %>
+    <%- include('../partials/_ifSignedInNavbar.ejs') %>
+    <h1>Welcome to the app, <%= user.name %>!</h1>
+
+
+<% } else { %>
+    <p>No user logged in.</p>
+<% } %>
+
 </body>
 </html>

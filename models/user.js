@@ -13,15 +13,6 @@ const userData = new Schema ({
         required: true,
         unique: true
     },
-    age: {
-        type: Number
-    },
-    height: {
-        type: Number
-    },
-    weight: {
-        type: Number
-    },
     isPublic: {
         type: Boolean,
         default: false,
@@ -32,6 +23,11 @@ const userData = new Schema ({
         ref: "Exercises",
         }
     ],
+    planId: 
+        {
+        type: Schema.Types.ObjectId,
+        ref: "Plans",  
+        },
 })
 
 const User = model('User', userData)

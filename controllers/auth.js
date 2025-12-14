@@ -29,7 +29,7 @@ router.post('/sign-up', async (req, res)=>{
         isPublic: user.isPublic
     }
     req.session.save(() => {
-    res.redirect("/");
+    res.redirect("/plans");
 })})
 
 router.get('/sign-in', async (req, res)=>{
