@@ -31,6 +31,12 @@ app.use(
     }),
   })
 );
+app.use((req, res, next) => {
+  res.locals.path = req.path
+  console.log('salman')
+  console.log(res.locals.path)
+  next()
+})
 
 async function conntectToDB(){ //connection to the database
     try{
@@ -47,9 +53,10 @@ conntectToDB() // connect to database
 app.use(passUserToView);
 
 // Public routes
-app.use('/public', publicCtrl);
-app.get('/', (req, res) => res.render('index.ejs'));
+app.use('/', publicCtrl);
+// app.get('/', (req, res) => res.render('index.ejs'));
 app.use('/auth', authCtrl);
+
 
 // Protected routes
 app.use(isSignIn);

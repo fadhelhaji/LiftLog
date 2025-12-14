@@ -7,7 +7,7 @@
 </head>
 <body>
         <% if (user) { %>
-              <%- include('../partials/_navbar.ejs') %>
+              <%- include('../partials/_ifSignedInNavbar.ejs') %>
             <h1>Welcome to the app, <%= user.name %>!</h1>
             <!-- <a href="/auth/sign-out">Sign out</a> -->
         <% } %>

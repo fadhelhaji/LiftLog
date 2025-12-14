@@ -12,6 +12,9 @@
     <ul>
       <% meals.forEach(meal => { %>
         <li><%= meal.mealName %> | Protein: <%= meal.protein %>g | Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g</li>
+        <% if (meal.protein < 10) { %>
+          <p>hello</p>
+       <% } %>
       <% }) %>
     </ul>
 
@@ -19,7 +22,9 @@
     <ul>
       <% exercises.forEach(ex => { %>
         <li><%= ex.exerciseName %> | Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>kg</li>
-      <% }) %>
+      <h2>created by <%= ex.userId.name%></h2>
+        <% }) %>
     </ul>
+    
 </body>
 </html>

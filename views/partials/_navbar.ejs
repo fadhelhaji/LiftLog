@@ -1,7 +1,11 @@
 <nav>
   <% if(user) { %>
+  <a href="/">Explore</a>
   <a href="/meals">Meals</a>
   <a href="/exercises">Exercises</a>
   <a href="/auth/sign-out">Sign Out</a>
-  <% } %>
+  <% } else { %>
+    <a href="auth/sign-in">Sign In</a>
+    <a href="auth/sign-up">Sign Up</a>
+    <% } %>
 </nav>

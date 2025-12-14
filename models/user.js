@@ -26,6 +26,12 @@ const userData = new Schema ({
         type: Boolean,
         default: false,
     },
+    exerciseId: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: "Exercises",
+        }
+    ],
 })
 
 const User = model('User', userData)
