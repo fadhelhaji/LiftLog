@@ -23,7 +23,7 @@ router.get('/users/:id', async (req, res) => {
            return res.send('This user’s logs are not public'); 
         } 
 
-        const meals = await Meals.find({ userId: user._id });
+        const meals = await Meals.find({ userId: user._id }).populate('userId');
         const exercises = await Exercises.find({ userId: user._id }).populate('userId');
         console.log(exercises)
 

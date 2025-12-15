@@ -9,7 +9,10 @@ router.get('/', (req, res) => {
 
 router.post('/new', async (req, res) => {
   try {
+    req.body.userId = req.session.user._id;
     const newPlan = await Plan.create(req.body)
+    console.log(newPlan);
+    
     res.redirect('/')
   } catch (error) {
     console.error(error)
@@ -20,6 +23,8 @@ router.get('/users/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
     const plan = await Plan.find({ userId: user._id }).populate('userId');
+    console.log(plan);
+    
     res.render('plans/userPlansDashboard.ejs', { user, plan })
   } catch (error) {
     console.error(error)

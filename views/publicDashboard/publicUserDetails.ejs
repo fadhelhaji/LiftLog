@@ -12,9 +12,7 @@
     <ul>
       <% meals.forEach(meal => { %>
         <li><%= meal.mealName %> | Protein: <%= meal.protein %>g | Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g</li>
-        <% if (meal.protein < 10) { %>
-          <p>hello</p>
-       <% } %>
+        <h2>created by <%= meal.userId.name%></h2>
       <% }) %>
     </ul>
 

@@ -6,20 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h2><%= user.name %>'s Plan</h2>
-
-    <% plan.forEach(e => { %>
-        <p>Goal: <%= e.userId.goal %></p>
-        <p>Age: <%= e.userId.age %></p>
-        <p>Height: <%= e.userId.height %></p>
-        <p>Weight: <%= e.userId.weight %></p>   
+    <h1><%= user.name %>'s plan</h1>
+    <% plan.forEach(p => { %>
+        <p>Goal:<%= p.goal %></p>
+        <p>Age:<%= p.age %></p>
+        <p>Height:<%= p.height %></p>
+       <p>Weight:<%= p.weight %></p>
     <% }); %>
-    
-    <!-- <% if (user) { %>
-
-    <% } else { %>
-        <p>No plan assigned yet.</p>
-    <% } %> -->
 </body>
 </html>
