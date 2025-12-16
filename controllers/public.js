@@ -15,20 +15,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post("/toggle-public", async (req, res) => {
-    try {
-        const userId = req.session.user._id;
-        const isPublic = !!req.body.isPublic;
-
-        await User.findByIdAndUpdate(userId, { isPublic });
-        req.session.user.isPublic = isPublic;
-        res.redirect("/");
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-
 router.get('/users/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);

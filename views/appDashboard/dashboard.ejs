@@ -6,22 +6,37 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <% if (user) { %> <%- include('../partials/_ifSignedInNavbar.ejs') %>
-    <h1>Welcome to the app, <%= user.name %>!</h1>
+    <% if (user) { %> <%- include('../partials/_navbar.ejs') %>
     <% } else { %>
     <p>No user logged in.</p>
     <% } %>
-    
+    <h1><%= user.name %>'s plan</h1>
+
+    <% if (plan && plan.length > 0) { %> <% plan.forEach(p => { let BMR = 10 *
+    p.weight + 6.25 * p.height - 5 * p.age + 5; let Calories; if (p.goal ===
+    'Maintain-weight') Calories = BMR * 1.2; else if (p.goal === 'Lose-weight')
+    Calories = BMR * 1.2 * 0.8; else if (p.goal === 'Gain-weight') Calories =
+    BMR * 1.2 * 1.2; %>
+    <p>Calories for <%= p.goal %>: <%= Math.round(Calories) %> kcal</p>
+    <p>Goal: <%= p.goal %></p>
+    <p>Age: <%= p.age %></p>
+    <p>Height: <%= p.height %></p>
+    <p>Weight: <%= p.weight %></p>
+    <% }) %> <% } else { %>
+    <p>No plan found. Create a plan first.</p>
+    <% } %>
+
     <h2>Profile Settings</h2>
-    
-    <form action="/toggle-public" method="POST">
+
+    <form action="/profile/toggle-public" method="POST">
       <label>
-        <input type="checkbox" name="isPublic" <%= user.isPublic ? "checked" : "" %> /> Make my profile public
+        <input type="checkbox" name="isPublic" <%= user.isPublic ? "checked" :
+        "" %> /> Make my profile public
       </label>
       <button type="submit">Save</button>
     </form>
-    
-    <form action="/user/delete-account?_method=DELETE" method="POST">
+
+    <form action="/profile/delete-account?_method=DELETE" method="POST">
       <button type="submit">Delete My Account</button>
     </form>
   </body>

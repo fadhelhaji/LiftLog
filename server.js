@@ -14,9 +14,8 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const mealsCtrl = require('./controllers/meals.js')
 const exercisesCtrl = require('./controllers/exercises.js')
 const publicCtrl = require('./controllers/public.js');
-const userPlans = require('./models/userPlans.js')
 const userPlansCtrl = require('./controllers/userPlans.js')
-const deleteUserCtrl = require('./controllers/deleteUser.js')
+const userCtrl = require('./controllers/profile.js')
 
 
 // Middleware
@@ -36,8 +35,6 @@ app.use(
 );
 app.use((req, res, next) => {
   res.locals.path = req.path
-  console.log('salman')
-  console.log(res.locals.path)
   next()
 })
 
@@ -62,11 +59,10 @@ app.use('/auth', authCtrl);
 
 // Protected routes
 app.use(isSignIn);
-app.get('/dashboard', (req, res) => res.render('appDashboard/dashboard.ejs'));
+app.use('/profile', userCtrl);
 app.use('/meals', mealsCtrl);
 app.use('/exercises', exercisesCtrl);
 app.use('/plans', userPlansCtrl)
-app.use('/user', deleteUserCtrl)
 
 app.listen(3000,()=>{
     console.log('App is running on port 3000')
