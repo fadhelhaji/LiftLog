@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Create Your Plan</h2>
 
     <form action="/plans/new" method="POST">
+      <label>Goal</label>
+      <select name="goal" required>
+        <option value="">Select goal</option>
+        <option value="Maintain-weight">Maintain Weight</option>
+        <option value="Lose-weight">Lose Weight</option>
+        <option value="Gain-weight">Gain Weight</option>
+      </select>
 
-        <label>Goal</label>
-        <select name="goal" required>
-            <option value="">Select goal</option>
-            <option value="Maintain-weight">Maintain Weight</option>
-            <option value="Lose-weight">Lose Weight</option>
-            <option value="Gain-weight">Gain Weight</option>
-        </select>
+      <label>Age</label>
+      <input type="number" name="age" required />
 
-        <label>Age</label>
-        <input type="number" name="age" required>
+      <label>Height (cm)</label>
+      <input type="number" name="height" required />
 
-        <label>Height (cm)</label>
-        <input type="number" name="height" required>
+      <label>Weight (kg)</label>
+      <input type="number" name="weight" required />
 
-        <label>Weight (kg)</label>
-        <input type="number" name="weight" required>
-
-
-        <button type="submit">Create Plan</button>
-
+      <button type="submit">Create Plan</button>
     </form>
-</body>
+  </body>
 </html>

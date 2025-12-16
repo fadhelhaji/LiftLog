@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1><%= user.name %>'s plan</h1>
-    <% plan.forEach(p => { 
-        let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
-        let Calories;
-        
-        if (p.goal === 'Maintain-weight') {
-            Calories = BMR * 1.2;
-        } else if (p.goal === 'Lose-weight') {
-            Calories = BMR * 1.2 * 0.8;
-        } else if (p.goal === 'Gain-weight') {
-            Calories = BMR * 1.2 * 1.2;
-        }
-    %>
-        <p>Calories for <%= p.goal %>: <%= Math.round(Calories) %> kcal</p>
-        <p>Goal: <%= p.goal %></p>
-        <p>Age: <%= p.age %></p>
-        <p>Height: <%= p.height %></p>
-        <p>Weight: <%= p.weight %></p>
+    <% plan.forEach(p => { let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age
+    + 5; let Calories; if (p.goal === 'Maintain-weight') { Calories = BMR * 1.2;
+    } else if (p.goal === 'Lose-weight') { Calories = BMR * 1.2 * 0.8; } else if
+    (p.goal === 'Gain-weight') { Calories = BMR * 1.2 * 1.2; } %>
+    <p>Calories for <%= p.goal %>: <%= Math.round(Calories) %> kcal</p>
+    <p>Goal: <%= p.goal %></p>
+    <p>Age: <%= p.age %></p>
+    <p>Height: <%= p.height %></p>
+    <p>Weight: <%= p.weight %></p>
     <% }); %>
-</body>
+  </body>
 </html>

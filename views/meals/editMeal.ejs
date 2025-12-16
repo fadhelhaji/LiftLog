@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Meal</title>
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Meal</title>
+  </head>
+  <body>
     <h1>Edit <%= meal.mealName %></h1>
 
-  <form action="/meals/<%= meal._id %>?_method=PUT" method="POST">
-    <label for="mealName">Meal Name</label>
-    <input type="text" name="mealName" id="mealName" value="<%= meal.mealName %>">
+    <form action="/meals/<%= meal._id %>?_method=PUT" method="POST">
+      <label for="mealName">Meal Name</label>
+      <input
+        type="text"
+        name="mealName"
+        id="mealName"
+        value="<%= meal.mealName %>"
+      />
 
-    <label for="protein">Protein (g)</label>
-    <input type="number" name="protein" id="protein" value="<%= meal.protein %>">
+      <label for="protein">Protein (g)</label>
+      <input
+        type="number"
+        name="protein"
+        id="protein"
+        value="<%= meal.protein %>"
+      />
 
-    <label for="carbs">Carbs (g)</label>
-    <input type="number" name="carbs" id="carbs" value="<%= meal.carbs %>">
+      <label for="carbs">Carbs (g)</label>
+      <input type="number" name="carbs" id="carbs" value="<%= meal.carbs %>" />
 
-    <label for="fat">Fat (g)</label>
-    <input type="number" name="fat" id="fat" value="<%= meal.fat %>">
+      <label for="fat">Fat (g)</label>
+      <input type="number" name="fat" id="fat" value="<%= meal.fat %>" />
 
-    <button type="submit">Update Meal</button>
-  </form>
+      <button type="submit">Update Meal</button>
+    </form>
 
-  <a href="/meals">Back to Meals Dashboard</a>
-</body>
+    <a href="/meals">Back to Meals Dashboard</a>
+  </body>
 </html>

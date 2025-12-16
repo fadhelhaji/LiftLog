@@ -20,6 +20,7 @@
   "homepage": "https://github.com/fadhelhaji/MEN-auth-template#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "bootstrap": "^5.3.8",
     "connect-mongo": "^6.0.0",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",

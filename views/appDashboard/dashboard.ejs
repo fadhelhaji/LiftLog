@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-</head>
-<body>
-
-    <% if (user) { %>
-        <%- include('../partials/_ifSignedInNavbar.ejs') %>
-        <h1>Welcome to the app, <%= user.name %>!</h1>
+  </head>
+  <body>
+    <% if (user) { %> <%- include('../partials/_ifSignedInNavbar.ejs') %>
+    <h1>Welcome to the app, <%= user.name %>!</h1>
     <% } else { %>
-        <p>No user logged in.</p>
+    <p>No user logged in.</p>
     <% } %>
-    <form action="/user/delete-account?_method=DELETE" method="POST">
-        <button type="submit">Delete My Account</button>
-    </form>
-
     
-
-</body>
+    <h2>Profile Settings</h2>
+    
+    <form action="/toggle-public" method="POST">
+      <label>
+        <input type="checkbox" name="isPublic" <%= user.isPublic ? "checked" : "" %> /> Make my profile public
+      </label>
+      <button type="submit">Save</button>
+    </form>
+    
+    <form action="/user/delete-account?_method=DELETE" method="POST">
+      <button type="submit">Delete My Account</button>
+    </form>
+  </body>
 </html>
