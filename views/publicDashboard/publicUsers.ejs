@@ -4,21 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %> <% if (user) { %>
-    <h1>Welcome to the app, <%= user.name %>!</h1>
-    <% } else { %>
-    <p>Please sign in</p>
-    <% } %>
+    <div class="navbar-container">
+      <div class="navbar"><%- include('../partials/_navbar.ejs') %></div>
+    </div>
 
-    <h2>Explore Users</h2>
-    <ul>
+    <div class="welcome-text-container">
+      <div class="welcome-text">
+        <h1>Welcome to the app, <%= user.name %>!</h1>
+        <p class="slogan">"Your journey, your progress, your victory."</p>
+      </div>
+    </div>
+
+    <div class="explore-container">
+      <div class="explore">
+        <h2>Explore real fitness journeys from our community</h2>
+      </div>
+    </div>
+
+    <div class="users-container">
       <% users.forEach(u => { %>
-      <li>
+      <div class="user-card">
         <a href="/users/<%= u._id %>"><%= u.name %></a>
-      </li>
+        <p>Goal: <%= u.goal %></p>
+      </div>
       <% }) %>
-    </ul>
+    </div>
   </body>
 </html>

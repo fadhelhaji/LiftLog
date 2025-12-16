@@ -21,7 +21,7 @@
           totalProtein += meal.protein;
           totalCarbs += meal.carbs;
           totalFat += meal.fat;
-          totalCalories += meal.protein * 4 + meal.carbs * 4 + meal.fat * 9;
+          totalCalories += meal.calories;
         });
 
         plan.forEach((p) => {
@@ -70,7 +70,7 @@
         <% mealsByDay[day].forEach((meal) => { %>
           <li>
             <%= meal.mealName %> | Protein: <%= meal.protein %>g |
-            Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g
+            Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g | Calories: <%= meal.calories %>Kcal
           </li>
         <% }) %>
       </ul>

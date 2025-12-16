@@ -17,6 +17,9 @@ const userMeal = new Schema ({
     fat: {
         type: Number
     },
+    calories: {
+        type: String
+    },
     date: { 
         type: Date, 
         default: Date.now,
