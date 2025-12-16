@@ -16,6 +16,7 @@ const exercisesCtrl = require('./controllers/exercises.js')
 const publicCtrl = require('./controllers/public.js');
 const userPlans = require('./models/userPlans.js')
 const userPlansCtrl = require('./controllers/userPlans.js')
+const deleteUserCtrl = require('./controllers/deleteUser.js')
 
 
 // Middleware
@@ -40,7 +41,7 @@ app.use((req, res, next) => {
   next()
 })
 
-async function conntectToDB(){ //connection to the database
+async function conntectToDB(){
     try{
         await mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to Database")
@@ -56,7 +57,6 @@ app.use(passUserToView);
 
 // Public routes
 app.use('/', publicCtrl);
-// app.get('/', (req, res) => res.render('index.ejs'));
 app.use('/auth', authCtrl);
 
 
@@ -66,6 +66,7 @@ app.get('/dashboard', (req, res) => res.render('appDashboard/dashboard.ejs'));
 app.use('/meals', mealsCtrl);
 app.use('/exercises', exercisesCtrl);
 app.use('/plans', userPlansCtrl)
+app.use('/user', deleteUserCtrl)
 
 app.listen(3000,()=>{
     console.log('App is running on port 3000')

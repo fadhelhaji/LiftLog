@@ -7,14 +7,17 @@
 </head>
 <body>
 
-<% if (user) { %>
-    <%- include('../partials/_ifSignedInNavbar.ejs') %>
-    <h1>Welcome to the app, <%= user.name %>!</h1>
+    <% if (user) { %>
+        <%- include('../partials/_ifSignedInNavbar.ejs') %>
+        <h1>Welcome to the app, <%= user.name %>!</h1>
+    <% } else { %>
+        <p>No user logged in.</p>
+    <% } %>
+    <form action="/user/delete-account?_method=DELETE" method="POST">
+        <button type="submit">Delete My Account</button>
+    </form>
 
-
-<% } else { %>
-    <p>No user logged in.</p>
-<% } %>
+    
 
 </body>
 </html>

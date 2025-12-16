@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Plan = require('../models/userPlans')
 
+
 router.get('/', (req, res) => {
   res.render('plans/userPlans.ejs')
 })
