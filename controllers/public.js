@@ -8,7 +8,6 @@ const Plan = require('../models/userPlans')
 router.get('/', async (req, res) => {
   try {
     const users = await User.find({ isPublic: true }).select('name');
-    console.log(users)
     for (let u of users) {
       const p = await Plan.findOne({ userId: u._id }).lean();
       u.goal = p ? p.goal : 'No plan yet';
