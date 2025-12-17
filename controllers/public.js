@@ -6,17 +6,17 @@ const Exercises = require("../models/exercises");
 const Plan = require('../models/userPlans')
 
 router.get('/', async (req, res) => {
-    try {
-        const users = await User.find({ isPublic: true }).select('name');
-        console.log(users) 
-        for (let u of users) {
+  try {
+    const users = await User.find({ isPublic: true }).select('name');
+    console.log(users)
+    for (let u of users) {
       const p = await Plan.findOne({ userId: u._id }).lean();
       u.goal = p ? p.goal : 'No plan yet';
     }
-        res.render('publicDashboard/publicUsers.ejs', { users });
-    } catch (error) {
-        console.log(error);
-    }
+    res.render('publicDashboard/publicUsers.ejs', { users });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.get('/users/:id', async (req, res) => {
@@ -24,8 +24,8 @@ router.get('/users/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
 
     if (!user.isPublic) {
-      return res.send('This user’s logs are not public'); 
-    } 
+      return res.send('This user’s logs are not public');
+    }
 
     const meals = await Meals.find({ userId: user._id }).populate('userId').sort({ date: 1 });
 
@@ -36,10 +36,10 @@ router.get('/users/:id', async (req, res) => {
       mealsByDay[day].push(meal);
     });
 
-    
+
     const exercises = await Exercises.find({ userId: user._id }).populate('userId');
     const plan = await Plan.find({ userId: user._id });
-    
+
     let exercisesByDay = {};
     exercises.forEach(ex => {
       const day = ex.date ? ex.date.toISOString().split('T')[0] : 'Unknown';

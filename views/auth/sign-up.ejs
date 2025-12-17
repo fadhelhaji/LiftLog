@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="post">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>Sign Up</title>
+</head>
+
+<body>
+  <form action="/auth/sign-up" method="post" class="sign-up-form">
+    <h1 class="form-title">Create a New Account</h1>
+
+    <div class="form-group">
       <label for="name">Username:</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" required />
+    </div>
+
+    <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
+      <input type="password" name="password" id="password" required />
+    </div>
+
+    <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-      <!-- <label for="age">Age</label>
-      <input type="age" name="age" id="age">
-      <label for="height">Height</label>
-      <input type="height" name="height" id="height">
-      <label for="weight">Weight</label>
-      <input type="weight" name="weight" id="weight"> -->
+      <input type="password" name="confirmPassword" id="confirmPassword" required />
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" name="isPublic" id="isPublic" />
       <label for="isPublic">Public User</label>
-      <input type="checkbox" name="isPublic" id="isPublic">
-      <button type="submit">Sign up</button>
-    </form>
-  </body>
+    </div>
+
+    <button type="submit" class="submit-btn">Sign Up</button>
+  </form>
+</body>
+
 </html>

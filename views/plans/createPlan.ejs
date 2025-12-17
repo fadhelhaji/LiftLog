@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h2>Create Your Plan</h2>
 
-    <form action="/plans/new" method="POST">
-      <label>Goal</label>
-      <select name="goal" required>
-        <option value="">Select goal</option>
-        <option value="Maintain-weight">Maintain Weight</option>
-        <option value="Lose-weight">Lose Weight</option>
-        <option value="Gain-weight">Gain Weight</option>
-      </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Plan</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-      <label>Age</label>
-      <input type="number" name="age" required />
+<body>
+  <div class="plan-page-container">
+    <h2 class="plan-page-title">Create Your Plan</h2>
+    <form class="plan-page-form" action="/plans/new" method="POST">
+      <div class="plan-form-group">
+        <label>Goal</label>
+        <select name="goal" required>
+          <option value="">Select goal</option>
+          <option value="Maintain-weight">Maintain Weight</option>
+          <option value="Lose-weight">Lose Weight</option>
+          <option value="Gain-weight">Gain Weight</option>
+        </select>
+      </div>
 
-      <label>Height (cm)</label>
-      <input type="number" name="height" required />
+      <div class="plan-form-group">
+        <label>Age</label>
+        <input type="number" name="age" required />
+      </div>
 
-      <label>Weight (kg)</label>
-      <input type="number" name="weight" required />
+      <div class="plan-form-group">
+        <label>Height (cm)</label>
+        <input type="number" name="height" required />
+      </div>
 
-      <button type="submit">Create Plan</button>
+      <div class="plan-form-group">
+        <label>Weight (kg)</label>
+        <input type="number" name="weight" required />
+      </div>
+
+      <button type="submit" class="plan-submit-btn">Create Plan</button>
     </form>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -1,43 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <% if (user) { %> <%- include('../partials/_navbar.ejs') %>
-    <% } else { %>
-    <p>No user logged in.</p>
-    <% } %>
-    <h1><%= user.name %>'s plan</h1>
 
-    <% if (plan && plan.length > 0) { %> <% plan.forEach(p => { let BMR = 10 *
-    p.weight + 6.25 * p.height - 5 * p.age + 5; let Calories; if (p.goal ===
-    'Maintain-weight') Calories = BMR * 1.2; else if (p.goal === 'Lose-weight')
-    Calories = BMR * 1.2 * 0.8; else if (p.goal === 'Gain-weight') Calories =
-    BMR * 1.2 * 1.2; %>
-    <p>Calories for <%= p.goal %>: <%= Math.round(Calories) %> kcal</p>
-    <p>Goal: <%= p.goal %></p>
-    <p>Age: <%= p.age %></p>
-    <p>Height: <%= p.height %></p>
-    <p>Weight: <%= p.weight %></p>
-    <% }) %> <% } else { %>
-    <p>No plan found. Create a plan first.</p>
-    <% } %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-    <h2>Profile Settings</h2>
+<body>
+  <% if (user) { %> <%- include('../partials/_navbar.ejs') %>
+      <% } else { %>
+        <p>No user logged in.</p>
+        <% } %>
 
-    <form action="/profile/toggle-public" method="POST">
-      <label>
-        <input type="checkbox" name="isPublic" <%= user.isPublic ? "checked" :
-        "" %> /> Make my profile public
-      </label>
-      <button type="submit">Save</button>
-    </form>
+          <div class="profile-container">
+            <h1 class="profile-title">Your Plan</h1>
 
-    <form action="/profile/delete-account?_method=DELETE" method="POST">
-      <button type="submit">Delete My Account</button>
-    </form>
-  </body>
+            <div class="plan-info">
+              <% if (plan && plan.length> 0) { %> <% plan.forEach(p=> { let BMR = 10 *
+                  p.weight + 6.25 * p.height - 5 * p.age + 5; let Calories; if (p.goal ===
+                  'Maintain-weight') Calories = BMR * 1.2; else if (p.goal ===
+                  'Lose-weight') Calories = BMR * 1.2 * 0.8; else if (p.goal ===
+                  'Gain-weight') Calories = BMR * 1.2 * 1.2; %>
+                  <div class="plan-card">
+                    <p>
+                      <strong>Goal:</strong>
+                      <%= p.goal %>
+                    </p>
+                    <p>
+                      <strong>Calories:</strong>
+                      <%= Math.round(Calories) %> kcal
+                    </p>
+                    <p>
+                      <strong>Age:</strong>
+                      <%= p.age %>
+                    </p>
+                    <p>
+                      <strong>Height:</strong>
+                      <%= p.height %> cm
+                    </p>
+                    <p>
+                      <strong>Weight:</strong>
+                      <%= p.weight %> kg
+                    </p>
+                  </div>
+                  <% }) %>
+                    <% } else { %>
+                      <p class="no-plan-msg">No plan found. Create a plan first.</p>
+                      <% } %>
+            </div>
+
+            <h2 class="settings-title">Profile Settings</h2>
+
+            <div class="settings-forms">
+              <form class="settings-form" action="/profile/toggle-public" method="POST">
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" name="isPublic" id="isPublic" <%=user.isPublic ? "checked" : "" %> />
+                  <label for="isPublic">Make my profile public</label>
+                </div>
+                <button class="submit-btn" type="submit">Save</button>
+              </form>
+
+              <form class="settings-form delete-form" action="/profile/delete-account?_method=DELETE" method="POST">
+                <button class="submit-btn delete-btn" type="submit">
+                  Delete My Account
+                </button>
+              </form>
+            </div>
+          </div>
+</body>
+
 </html>

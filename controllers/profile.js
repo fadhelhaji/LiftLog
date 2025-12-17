@@ -24,7 +24,7 @@ router.post("/toggle-public", async (req, res) => {
     const isPublic = !!req.body.isPublic;
 
     await User.findByIdAndUpdate(userId, { isPublic });
-    req.session.user.isPublic = isPublic; 
+    req.session.user.isPublic = isPublic;
     res.redirect("/");
   } catch (error) {
     console.error(error);

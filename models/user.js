@@ -17,17 +17,6 @@ const userData = new Schema ({
         type: Boolean,
         default: false,
     },
-    // exerciseId: [
-    //     {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Exercises",
-    //     }
-    // ],
-    // planId: 
-    //     {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Plans",  
-    //     },
 })
 
 const User = model('User', userData)

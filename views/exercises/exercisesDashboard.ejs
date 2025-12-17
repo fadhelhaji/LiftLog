@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Exercises</title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs') %> <%
-    foundExercises.forEach(exercise => { %>
-    <div class="meal-card">
-      <h3><%= exercise.exerciseName %></h3>
-      <p>Muscle target: <%= exercise.muscleName %></p>
-      <p>Sets: <%= exercise.sets %></p>
-      <p>Reps: <%= exercise.reps %></p>
-      <p>Weight lifted: <%= exercise.weight %> Kg</p>
 
-      <a href="/exercises/<%= exercise._id %>/edit">Edit</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
 
-      <form
-        action="/exercises/<%= exercise._id %>?_method=DELETE"
-        method="POST"
-      >
-        <button type="submit">Delete</button>
-      </form>
+  <title>Your Exercises</title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+    <div class="items-container">
+      <% foundExercises.forEach(exercise=> { %>
+        <div class="item-card">
+          <div class="item-info">
+            <h3 class="item-name">
+              <%= exercise.exerciseName %>
+            </h3>
+            <p class="item-details">Muscle target: <%= exercise.muscleName %>
+            </p>
+            <p class="item-details">Sets: <%= exercise.sets %>
+            </p>
+            <p class="item-details">Reps: <%= exercise.reps %>
+            </p>
+            <p class="item-details">Weight lifted: <%= exercise.weight %> Kg</p>
+          </div>
+          <div class="item-actions">
+            <a href="/exercises/<%= exercise._id %>/edit" class="edit-btn">Edit</a>
+            <form action="/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </div>
+        </div>
+        <% }); %>
     </div>
-    <% }); %>
 
-    <button><a href="/exercises/new">Add new exercise</a></button>
-  </body>
+    <div class="create-item">
+      <a href="/exercises/new" class="create-btn">Add new exercise</a>
+    </div>
+</body>
+
 </html>

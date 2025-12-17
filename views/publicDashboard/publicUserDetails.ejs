@@ -1,89 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1><%= user.name %>’s Daily Logs</h1>
 
-    <% Object.keys(mealsByDay).forEach((day) => { %>
-      <h2>Date: <%= day %></h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= user.name %>’s Daily Logs
+  </title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-      <% 
-        let totalProtein = 0;
-        let totalCarbs = 0;
-        let totalFat = 0;
-        let totalCalories = 0;
+<body>
+  <h1 class="log-page-title">
+    <%= user.name %>’s Daily Logs
+  </h1>
 
-        mealsByDay[day].forEach((meal) => {
-          totalProtein += meal.protein;
-          totalCarbs += meal.carbs;
-          totalFat += meal.fat;
-          totalCalories += meal.calories;
-        });
+  <% Object.keys(mealsByDay).forEach((day)=> { %>
+    <div class="log-day-section">
+      <h2 class="log-day-title">Date: <%= day %>
+      </h2>
 
-        plan.forEach((p) => {
+      <% let totalProtein=0; let totalCarbs=0; let totalFat=0; let totalCalories=0; mealsByDay[day].forEach((meal)=> {
+        totalProtein += meal.protein;
+        totalCarbs += meal.carbs;
+        totalFat += meal.fat;
+        totalCalories += meal.calories;
+        }); %>
+
+        <% plan.forEach((p)=> {
           let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
-          let CaloriesGoal;
-
-          if (p.goal === 'Maintain-weight') {
-            CaloriesGoal = BMR * 1.2;
-          } else if (p.goal === 'Lose-weight') {
-            CaloriesGoal = BMR * 1.2 * 0.8;
-          } else if (p.goal === 'Gain-weight') {
-            CaloriesGoal = BMR * 1.2 * 1.2;
-          }
-
+          let CaloriesGoal = p.goal === 'Maintain-weight' ? BMR * 1.2 :
+          p.goal === 'Lose-weight' ? BMR * 1.2 * 0.8 :
+          BMR * 1.2 * 1.2;
           let proteinGoal = 2 * p.weight;
           let fatGoal = (CaloriesGoal * 0.25) / 9;
           let carbsGoal = (CaloriesGoal - (proteinGoal * 4 + fatGoal * 9)) / 4;
-
           let remainingProtein = Math.max(0, proteinGoal - totalProtein);
           let remainingCarbs = Math.max(0, carbsGoal - totalCarbs);
           let remainingFat = Math.max(0, fatGoal - totalFat);
           let remainingCalories = Math.max(0, CaloriesGoal - totalCalories);
-      %>
+          %>
+          <div class="log-plan-summary">
+            <h3>Plan: <%= p.goal %>
+            </h3>
+            <p>Calories: <%= Math.round(totalCalories) %> / <%= Math.round(CaloriesGoal) %> | Remaining: <%=
+                    Math.round(remainingCalories) %>
+            </p>
+            <p>Protein: <%= totalProtein %> / <%= Math.round(proteinGoal) %> | Remaining: <%=
+                    Math.round(remainingProtein) %> g</p>
+            <p>Carbs: <%= totalCarbs %> / <%= Math.round(carbsGoal) %> | Remaining: <%= Math.round(remainingCarbs) %> g
+            </p>
+            <p>Fat: <%= totalFat %> / <%= Math.round(fatGoal) %> | Remaining: <%= Math.round(remainingFat) %> g</p>
+          </div>
+          <% }) %>
 
-        <h3>Plan: <%= p.goal %></h3>
-        <p>
-          Calories: <%= Math.round(totalCalories) %> / <%= Math.round(CaloriesGoal) %> |
-          Remaining: <%= Math.round(remainingCalories) %>
-        </p>
-        <p>
-          Protein: <%= totalProtein %> / <%= Math.round(proteinGoal) %> |
-          Remaining: <%= Math.round(remainingProtein) %> g
-        </p>
-        <p>
-          Carbs: <%= totalCarbs %> / <%= Math.round(carbsGoal) %> |
-          Remaining: <%= Math.round(remainingCarbs) %> g
-        </p>
-        <p>
-          Fat: <%= totalFat %> / <%= Math.round(fatGoal) %> |
-          Remaining: <%= Math.round(remainingFat) %> g
-        </p>
-      <% }) %>
+            <h3>Meals:</h3>
+            <div class="log-meals-container">
+              <% mealsByDay[day].forEach((meal)=> { %>
+                <div class="log-meal-card">
+                  <span class="log-meal-name">
+                    <%= meal.mealName %>
+                  </span>
+                  <span class="log-meal-info">Protein: <%= meal.protein %>g | Carbs: <%= meal.carbs %>g | Fat: <%=
+                          meal.fat %>g | Calories: <%= meal.calories %>Kcal</span>
+                </div>
+                <% }) %>
+            </div>
 
-      <h3>Meals:</h3>
-      <ul>
-        <% mealsByDay[day].forEach((meal) => { %>
-          <li>
-            <%= meal.mealName %> | Protein: <%= meal.protein %>g |
-            Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g | Calories: <%= meal.calories %>Kcal
-          </li>
-        <% }) %>
-      </ul>
+            <h3>Exercises:</h3>
+            <div class="log-exercises-container">
+              <% (exercisesByDay[day] || []).forEach((ex)=> { %>
+                <div class="log-exercise-card">
+                  <span class="log-exercise-name">
+                    <%= ex.exerciseName %>
+                  </span>
+                  <span class="log-exercise-info">Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>
+                          kg</span>
+                </div>
+                <% }) %>
+            </div>
 
-      <h3>Exercises:</h3>
-      <ul>
-        <% (exercisesByDay[day] || []).forEach((ex) => { %>
-          <li>
-            <%= ex.exerciseName %> | Sets: <%= ex.sets %> |
-            Reps: <%= ex.reps %> | Weight: <%= ex.weight %> kg
-          </li>
-        <% }) %>
-      </ul>
+    </div>
     <% }) %>
-  </body>
+</body>
+
 </html>

@@ -3,16 +3,16 @@ const router = express.Router();
 const User = require("../models/user")
 const Exercises = require("../models/exercises")
 
-router.get('/', async (req, res)=>{
+router.get('/', async (req, res) => {
   try {
-      const foundExercises = await Exercises.find({userId: req.session.user._id})
-      res.render('exercises/exercisesDashboard.ejs', {foundExercises})
+    const foundExercises = await Exercises.find({ userId: req.session.user._id })
+    res.render('exercises/exercisesDashboard.ejs', { foundExercises })
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 })
 
-router.get('/new', async (req, res)=>{
+router.get('/new', async (req, res) => {
   try {
     res.render('exercises/newExercise.ejs')
   } catch (error) {
@@ -20,9 +20,9 @@ router.get('/new', async (req, res)=>{
   }
 })
 
-router.post('/', async (req, res)=>{
+router.post('/', async (req, res) => {
   try {
-    req.body.userId = req.session.user._id; // attach logged-in user
+    req.body.userId = req.session.user._id;
     const newExercises = await Exercises.create(req.body)
     res.redirect('/exercises')
   } catch (error) {
@@ -30,31 +30,28 @@ router.post('/', async (req, res)=>{
   }
 })
 
-// Show edit form
 router.get('/:id/edit', async (req, res) => {
   try {
     const exercise = await Exercises.findById(req.params.id);
-    res.render('exercises/editExercise.ejs', {exercise});
+    res.render('exercises/editExercise.ejs', { exercise });
   } catch (error) {
     console.log(error);
   }
 });
 
-// Update exercise
 router.put('/:id', async (req, res) => {
   try {
     const updatedExercise = await Exercises.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect('/exercises'); 
+    res.redirect('/exercises');
   } catch (error) {
     console.log(error);
   }
 });
 
-// Delete exercise
 router.delete('/:id', async (req, res) => {
   try {
     const deletedExercise = await Exercises.findByIdAndDelete(req.params.id);
-    res.redirect('/exercises'); 
+    res.redirect('/exercises');
   } catch (error) {
     console.log(error);
   }

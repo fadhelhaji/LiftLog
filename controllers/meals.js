@@ -3,63 +3,60 @@ const router = express.Router();
 const User = require("../models/user")
 const Meals = require("../models/meals")
 
-router.get("/", async (req, res)=>{
+router.get("/", async (req, res) => {
   try {
-      const foundMeals = await Meals.find({userId: req.session.user._id});
-      res.render("meals/mealsDashboard.ejs", {foundMeals});
+    const foundMeals = await Meals.find({ userId: req.session.user._id });
+    res.render("meals/mealsDashboard.ejs", { foundMeals });
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 
 })
 
-router.get("/new", async (req, res)=>{
+router.get("/new", async (req, res) => {
   try {
-      res.render('meals/newMeal.ejs') 
+    res.render('meals/newMeal.ejs')
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 })
 
 router.post('/', async (req, res) => {
   try {
-      req.body.userId = req.session.user._id; // attach logged-in user
-      const createMeal = await Meals.create(req.body);
-      res.redirect('/meals');
+    req.body.userId = req.session.user._id;
+    const createMeal = await Meals.create(req.body);
+    res.redirect('/meals');
   } catch (error) {
-      console.error(error);
-      res.redirect('/meals');
+    console.error(error);
+    res.redirect('/meals');
   }
 });
 
-// Show edit form
 router.get('/:id/edit', async (req, res) => {
   try {
-      const meal = await Meals.findById(req.params.id);
-      res.render('meals/editMeal.ejs', { meal });
+    const meal = await Meals.findById(req.params.id);
+    res.render('meals/editMeal.ejs', { meal });
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 });
 
-// Update meal
 router.put('/:id', async (req, res) => {
   try {
-      await Meals.findByIdAndUpdate(req.params.id, req.body);
-      res.redirect('/meals');
+    await Meals.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/meals');
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 });
 
-// Delete meal
 router.delete('/:id', async (req, res) => {
-    try {
-      await Meals.findByIdAndDelete(req.params.id);
-      res.redirect('/meals');
-    } catch (error) {
-      console.log(error); 
-    }
+  try {
+    await Meals.findByIdAndDelete(req.params.id);
+    res.redirect('/meals');
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 
