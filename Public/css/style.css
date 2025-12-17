@@ -116,6 +116,7 @@ span.explore-msg {
 .slogan {
   margin-top: 10px;
   text-align: center;
+  font-family: 'Chewy', system-ui;
 }
 
 .carousel {
@@ -148,7 +149,6 @@ h6.card-title {
 }
 
 @keyframes bounce {
-
   0%,
   20%,
   50%,
@@ -166,6 +166,19 @@ h6.card-title {
   }
 }
 
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  } to {
+    transform: translateX(0%);
+  }
+}
+
+span.ifNotSignedIn-msg {
+  font-family: 'Chewy', system-ui;
+  animation: slide-in 2s ease-in-out;
+  display: inline-block;
+}
 
 .sign-up-form,
 .sign-in-form {
@@ -701,4 +714,9 @@ span.totalCarbs {
 
 .back-dashboard-link:hover {
   text-decoration: underline;
+}
+
+#facts {
+  font-family: 'Chewy', system-ui;
+  font-size: 20px;
 }
