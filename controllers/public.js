@@ -5,6 +5,13 @@ const Meals = require("../models/meals");
 const Exercises = require("../models/exercises");
 const Plan = require('../models/userPlans')
 
+
+const weightGoals = {
+  maintainWeight: "Maintain Weight",
+  loseWeight: "Lose Weight",
+  gainWeight: "Gain Weight"
+};
+
 router.get('/', async (req, res) => {
   try {
     const users = await User.find({ isPublic: true }).select('name');
@@ -12,7 +19,7 @@ router.get('/', async (req, res) => {
       const p = await Plan.findOne({ userId: u._id }).lean();
       u.goal = p ? p.goal : 'No plan yet';
     }
-    res.render('publicDashboard/publicUsers.ejs', { users });
+    res.render('publicDashboard/publicUsers.ejs', { users , weightGoals });
   } catch (error) {
     console.log(error);
   }
