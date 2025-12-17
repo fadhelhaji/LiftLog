@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -21,11 +22,19 @@
             <h1 class="profile-title">Your Plan</h1>
 
             <div class="plan-info">
-              <% if (plan && plan.length> 0) { %> <% plan.forEach(p=> { let BMR = 10 *
-                  p.weight + 6.25 * p.height - 5 * p.age + 5; let Calories; if (p.goal ===
-                  'Maintain-weight') Calories = BMR * 1.2; else if (p.goal ===
-                  'Lose-weight') Calories = BMR * 1.2 * 0.8; else if (p.goal ===
-                  'Gain-weight') Calories = BMR * 1.2 * 1.2; %>
+              <% if (plan && plan.length> 0) { %>
+                <% plan.forEach(p=> {
+                  let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
+                  let Calories;
+                  if (p.goal === 'Maintain-weight') {
+                  Calories = BMR * 1.2;
+                  }
+                  else if (p.goal === 'Lose-weight') {
+                  Calories = BMR * 1.2 * 0.8;
+                  }
+                  else if (p.goal === 'Gain-weight') {
+                  Calories = BMR * 1.2 * 1.2; %>
+                  }
                   <div class="plan-card">
                     <p>
                       <strong>Goal:</strong>
