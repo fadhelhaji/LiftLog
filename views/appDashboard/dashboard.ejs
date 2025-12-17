@@ -23,44 +23,40 @@
 
             <div class="plan-info">
               <% if (plan && plan.length> 0) { %>
-                <% plan.forEach(p=> {
-                  let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
-                  let Calories;
-                  if (p.goal === 'Maintain-weight') {
-                  Calories = BMR * 1.2;
-                  }
-                  else if (p.goal === 'Lose-weight') {
-                  Calories = BMR * 1.2 * 0.8;
-                  }
-                  else if (p.goal === 'Gain-weight') {
-                  Calories = BMR * 1.2 * 1.2; %>
-                  }
-                  <div class="plan-card">
-                    <p>
-                      <strong>Goal:</strong>
-                      <%= p.goal %>
-                    </p>
-                    <p>
-                      <strong>Calories:</strong>
-                      <%= Math.round(Calories) %> kcal
-                    </p>
-                    <p>
-                      <strong>Age:</strong>
-                      <%= p.age %>
-                    </p>
-                    <p>
-                      <strong>Height:</strong>
-                      <%= p.height %> cm
-                    </p>
-                    <p>
-                      <strong>Weight:</strong>
-                      <%= p.weight %> kg
-                    </p>
-                  </div>
-                  <% }) %>
-                    <% } else { %>
-                      <p class="no-plan-msg">No plan found. Create a plan first.</p>
-                      <% } %>
+                <% plan.forEach(p=> { %>
+
+                  <% let BMR=10 * p.weight + 6.25 * p.height - 5 * p.age + 5; 
+                  let Calories; 
+                  if (p.goal==='Maintain-weight') { 
+                    Calories=BMR * 1.2; 
+                  } else if (p.goal==='Lose-weight') {
+                    Calories=BMR * 1.2 * 0.8; 
+                  } else if (p.goal==='Gain-weight') { 
+                    Calories=BMR * 1.2 * 1.2; 
+                  } %>
+
+                    <div class="plan-card">
+                      <p><strong>Goal:</strong>
+                        <%= p.goal %>
+                      </p>
+                      <p><strong>Calories:</strong>
+                        <%= Math.round(Calories) %> kcal
+                      </p>
+                      <p><strong>Age:</strong>
+                        <%= p.age %>
+                      </p>
+                      <p><strong>Height:</strong>
+                        <%= p.height %> cm
+                      </p>
+                      <p><strong>Weight:</strong>
+                        <%= p.weight %> kg
+                      </p>
+                    </div>
+
+                    <% }) %>
+                      <% } else { %>
+                        <p class="no-plan-msg">No plan found. Create a plan first.</p>
+                        <% } %>
             </div>
 
             <h2 class="settings-title">Profile Settings</h2>

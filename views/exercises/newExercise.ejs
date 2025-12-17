@@ -1,19 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Exercise</title>
-  </head>
-  <body>
-    <form action="/exercises" method="post">
-      <input type="text" name="exerciseName" placeholder="Machine name" />
-      <input type="text" name="muscleName" placeholder="Muscle target" />
-      <input type="text" name="sets" placeholder="How many sets" />
-      <input type="text" name="reps" placeholder="How many reps" />
-      <input type="text" name="weight" placeholder="How heavy did you lift" />
 
-      <button type="submit">Log Exercise</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap" rel="stylesheet">
+  <title>Create Exercise</title>
+</head>
+
+<body>
+  <div class="navbar-container">
+    <div class="navbar"><%- include('../partials/_navbar.ejs') %></div>
+  </div>
+  <div class="form-page-container">
+    <div class="form-page-title">Log New Exercise</div>
+    <form class="form-page-form" action="/exercises" method="post">
+      <div class="form-group-wrapper">
+        <div class="form-group">
+          <label>Machine name</label>
+          <input type="text" name="exerciseName" placeholder="Machine name">
+        </div>
+
+        <div class="form-group">
+          <label>Muscle target</label>
+          <input type="text" name="muscleName" placeholder="Muscle target">
+        </div>
+
+        <div class="form-group">
+          <label>Sets</label>
+          <input type="number" name="sets" placeholder="How many sets">
+        </div>
+
+        <div class="form-group">
+          <label>Reps</label>
+          <input type="number" name="reps" placeholder="How many reps">
+        </div>
+
+        <div class="form-group">
+          <label>Weight (kg)</label>
+          <input type="number" name="weight" placeholder="How heavy did you lift">
+        </div>
+      </div>
+
+      <div class="form-submit-wrapper">
+        <button type="submit" class="form-submit-btn">Log Exercise</button>
+      </div>
     </form>
-  </body>
+  </div>
+</body>
+
 </html>

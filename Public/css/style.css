@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  font-family: 'Chewy', system-ui;
 }
 
 .navbar-container {
@@ -110,11 +111,9 @@ span.explore-msg {
 
 .user-card p {
   font-weight: 500;
-  color: #333;
 }
 
 .slogan {
-  color: #555;
   margin-top: 10px;
   text-align: center;
 }
@@ -277,11 +276,11 @@ body.sign-form-page {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
+  font-family: 'Chewy', system-ui;
 }
 
 .no-plan-msg {
   text-align: center;
-  color: #888;
 }
 
 .settings-forms {
@@ -289,6 +288,7 @@ body.sign-form-page {
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  font-family: 'Chewy', system-ui;
 }
 
 .settings-form {
@@ -297,6 +297,7 @@ body.sign-form-page {
   gap: 10px;
   width: 100%;
   max-width: 300px;
+  font-family: 'Chewy', system-ui;
 }
 
 .checkbox-group {
@@ -313,6 +314,7 @@ body.sign-form-page {
   color: white;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'Chewy', system-ui;
 }
 
 .submit-btn:hover {
@@ -321,6 +323,7 @@ body.sign-form-page {
 
 .delete-btn {
   background-color: #dc3545;
+  font-family: 'Chewy', system-ui;
 }
 
 .delete-btn:hover {
@@ -362,7 +365,6 @@ body.sign-form-page {
 
 .item-details {
   font-size: 14px;
-  color: #555;
 }
 
 .item-actions {
@@ -416,14 +418,12 @@ body.sign-form-page {
   text-align: center;
   margin-top: 40px;
   font-size: 28px;
-  color: #333;
 }
 
 .log-day-section {
   max-width: 900px;
   margin: 30px auto;
   padding: 20px;
-  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -434,10 +434,10 @@ body.sign-form-page {
 }
 
 .log-plan-summary {
-  background-color: #f5f5f5;
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 20px;
+  font-size: 25px;
 }
 
 .log-plan-summary h3 {
@@ -469,20 +469,17 @@ body.sign-form-page {
 .log-exercise-name {
   font-weight: bold;
   font-size: 18px;
-  color: #333;
 }
 
 .log-meal-info,
 .log-exercise-info {
   font-size: 14px;
-  color: #555;
 }
 
 .edit-meal-container {
   max-width: 400px;
   margin: 50px auto;
   padding: 25px 30px;
-  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -511,7 +508,6 @@ body.sign-form-page {
 
 .form-group-edit label {
   font-weight: bold;
-  color: #555;
 }
 
 .form-group-edit input {
@@ -553,13 +549,13 @@ body.sign-form-page {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Chewy', system-ui;
 }
 
 .plan-page-title {
   text-align: center;
   margin-bottom: 25px;
   font-size: 24px;
-  color: #333;
 }
 
 .plan-page-form {
@@ -576,7 +572,8 @@ body.sign-form-page {
 .plan-form-group label {
   font-weight: bold;
   margin-bottom: 6px;
-  color: #555;
+
+
 }
 
 .plan-form-group input,
@@ -604,4 +601,104 @@ body.sign-form-page {
 
 .plan-submit-btn:hover {
   background-color: #218838;
+}
+
+span.remainingCalories,
+span.remainingProtein,
+span.remainingCarbs,
+span.remainingFat {
+  font-size: 20px;
+}
+
+span.totalProtein,
+span.totalCalories,
+span.totalFat,
+span.totalCarbs {
+  font-size: 15px;
+}
+
+.form-page-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Chewy', system-ui;
+}
+
+.form-page-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #007bff;
+}
+
+.create-item {
+  text-decoration: none;
+}
+
+.form-page-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+}
+
+.form-submit-wrapper {
+  text-align: center;
+}
+
+.form-submit-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-submit-btn:hover {
+  background-color: #218838;
+}
+
+.back-link-wrapper {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.back-dashboard-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-dashboard-link:hover {
+  text-decoration: underline;
 }

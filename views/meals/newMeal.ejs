@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Meal</title>
-  </head>
-  <body>
-    <form action="/meals" method="post">
-      <input type="text" name="mealName" placeholder="Enter Meal Name" />
-      <input type="text" name="protein" placeholder="protein" />
-      <input type="text" name="carbs" placeholder="how much carbs" />
-      <input type="text" name="fat" placeholder="how much fat" />
-      <input type="text" name="calories" placeholder="how many calories" />
-      <button type="submit">Log Meal</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap" rel="stylesheet">
+  <title>Create Meal</title>
+</head>
+
+<body>
+  <div class="navbar-container">
+    <div class="navbar"><%- include('../partials/_navbar.ejs') %></div>
+  </div>
+  <div class="form-page-container">
+    <div class="form-page-title">Log New Meal</div>
+    <form class="form-page-form" action="/meals" method="post">
+      <div class="form-group-wrapper">
+        <div class="form-group">
+          <label>Meal Name</label>
+          <input type="text" name="mealName" placeholder="Enter Meal Name">
+        </div>
+
+        <div class="form-group">
+          <label>Protein (g)</label>
+          <input type="number" name="protein" placeholder="Protein">
+        </div>
+
+        <div class="form-group">
+          <label>Carbs (g)</label>
+          <input type="number" name="carbs" placeholder="How much carbs">
+        </div>
+
+        <div class="form-group">
+          <label>Fat (g)</label>
+          <input type="number" name="fat" placeholder="How much fat">
+        </div>
+
+        <div class="form-group">
+          <label>Calories (Kcal)</label>
+          <input type="number" name="calories" placeholder="How many calories">
+        </div>
+      </div>
+
+      <div class="form-submit-wrapper">
+        <button type="submit" class="form-submit-btn">Log Meal</button>
+      </div>
     </form>
-  </body>
+  </div>
+</body>
+
 </html>
