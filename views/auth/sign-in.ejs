@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap" rel="stylesheet">
-    <title>Sign In</title>
-  </head>
-  <body>
-  <div class="navbar-container">
-    <div class="navbar"><%- include('../partials/_navbar.ejs') %></div>
-  </div>
-    <form action="/auth/sign-in" method="post" class="sign-in-form">
-      <h1 class="form-title">Log In</h1>
 
-      <div class="form-group">
-        <label for="name">Username:</label>
-        <input type="text" name="name" id="name" required />
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Lobster&display=swap"
+    rel="stylesheet">
+  <title>Sign In</title>
+</head>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required />
-      </div>
+<body>
+  <form action="/auth/sign-in" method="post" class="sign-in-form">
+    <h1 class="form-title">Log In</h1>
 
-      <button type="submit" class="submit-btn">Sign In</button>
-    </form>
-  </body>
+    <div class="form-group">
+      <label for="name">Username:</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+
+    <button type="submit" class="submit-btn">Sign In</button>
+
+    <a class="back-dashboard-link" href="/">Back to Homepage</a>
+  </form>
+
+</body>
+
 </html>

@@ -1,12 +1,13 @@
 <nav class="nav">
-  <% if (!user) { %>
-      <% if(path === "/") { %>
-      <a href="/profile">Profile</a>
-      <a href="/meals">My Meals</a>
-      <a href="/exercises">My Exercises</a>
-      <a href="/auth/sign-out">Sign Out</a>
-    <% } %>
+<% if (!user) { %>
+  <% if (path === "/") { %>
+    <a href="/profile">Profile</a>
+    <a href="/meals">My Meals</a>
+    <a href="/exercises">My Exercises</a>
+    <a href="/auth/sign-in">Sign In</a>
   <% } %>
+<% } %>
+
 
 
   <% if (user) { %> 
