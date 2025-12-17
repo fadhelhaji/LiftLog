@@ -19,6 +19,7 @@ body {
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
+  font-family: "Chewy", system-ui;
 }
 
 .nav a {
@@ -30,6 +31,18 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 100px;
+}
+
+.welcome-msg {
+  font-size: 40px;
+  font-family: "Chewy", system-ui;
+}
+
+.ifUser {
+  font-size: 45px;
+  font-weight: bolder;
+  font-family: "Chewy", system-ui;
+  color: #004aad;
 }
 
 .explore-container {
@@ -47,6 +60,10 @@ body {
   margin-top: 20px;
 }
 
+.explore {
+  font-family: "Chewy", system-ui;
+}
+
 .user-card-link {
   color: inherit;
   display: block;
@@ -59,7 +76,7 @@ body {
 }
 
 .user-card {
-  background-color: #f0f0f0;
+  background-color: #245db7;
   border-radius: 10px;
   padding: 20px;
   width: 220px;
@@ -71,7 +88,21 @@ body {
   justify-content: center;
 }
 
+span.username {
+  color: white;
+  font-family: "Chewy", system-ui;
+}
 
+span.goal {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+span.explore-msg {
+  font-weight: bold;
+  font-size: 35px;
+  color: #004aad;
+}
 
 .user-card h3 {
   margin: 0 0 10px;
@@ -90,6 +121,20 @@ body {
 
 .carousel {
   margin-top: 100px;
+}
+
+h6.card-title {
+  font-weight: bolder;
+  color: white;
+}
+
+.card-body {
+  background-color: #245db7;
+  border-radius: 5px;
+}
+
+.card-text {
+  font-weight: bold;
 }
 
 .logo-container {
@@ -218,6 +263,7 @@ body.sign-form-page {
 .settings-title {
   text-align: center;
   margin-bottom: 15px;
+  font-family: 'Chewy', system-ui;
 }
 
 .plan-info {
