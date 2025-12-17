@@ -15,6 +15,7 @@
 - Fonts (Chewy): https://fonts.google.com/specimen/Chewy
 - Fonts (Bebas Neue): https://fonts.google.com/specimen/Bebas+Neue
 - CSS Framework: https://getbootstrap.com/
+- Canva (logo edit): https://www.canva.com/
 
 ## Technologies Used
 1. Front end: 
