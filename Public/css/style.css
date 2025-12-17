@@ -96,7 +96,14 @@ span.username {
 
 span.goal {
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 20px;
+  font-family: "Chewy", system-ui;
+  color: lightcyan;
+}
+
+.goal-label {
+  font-family: "Chewy", system-ui;
+  font-size: 15px
 }
 
 span.explore-msg {
