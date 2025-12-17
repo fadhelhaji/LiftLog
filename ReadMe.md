@@ -1,5 +1,5 @@
 ## Screenshot/Logo:
-<img src = "Public\Images\LiftLog.png" alt= "LiftLog-logo">
+<img src = "Screenshots\App-screenshot.png" alt= "LiftLog-logo">
 
 ## App Name and Description
 **LiftLog** is a macro and wellness tracking app designed to help users log their workouts, track daily nutrition. Users can create personalized workout and meal plans, set fitness goals, and view their performance on a dashboard.
