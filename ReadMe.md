@@ -7,7 +7,7 @@
 I built LiftLog because I go to the gym and found it hard to find simple tracking apps that don’t require payment. This app provides an easy, free solution for anyone who wants to track their fitness journey without subscriptions or complicated interfaces.
 
 ## Getting Started
-Deployed App Link: 
+Deployed App Link: https://liftlog-5jp5.onrender.com
 Project Plan Material: (Already available in 'Project Planning' Folder inside of LiftLog repo)
 
 ## Attributions
