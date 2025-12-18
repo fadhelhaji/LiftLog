@@ -48,7 +48,7 @@ router.get('/users/:id', async (req, res) => {
 
     let exercisesByDay = {};
     exercises.forEach(ex => {
-      const day = ex.date ? ex.date.toISOString().split('T')[0] : 'Unknown';
+      const day = ex.date ? ex.date.toISOString().split('T')[0];
       if (!exercisesByDay[day]) exercisesByDay[day] = [];
       exercisesByDay[day].push(ex);
     });
