@@ -60,7 +60,7 @@ router.get('/users/:id', async (req, res) => {
 
     const exercises = await Exercises.find({ userId: user._id }).populate('userId');
     const plan = await Plan.find({ userId: user._id });
-    res.render('appDashboard/dashboard.ejs', { user, exercises, plan, mealsByDay });
+    res.render('appDashboard/dashboard.ejs', { user, exercises, plan });
   } catch (error) {
     console.log(error);
   }
