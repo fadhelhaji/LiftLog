@@ -29,8 +29,8 @@
             <p class="item-details">Calories: <%= meal.calories %> Kcal</p>
           </div>
           <div class="item-actions">
-            <a href="/meals/<%= meal._id %>/edit" class="edit-btn">Edit</a>
             <form action="/meals/<%= meal._id %>?_method=DELETE" method="POST">
+              <button style="text-decoration: none;" class="form-submit-btn"><a href="/meals/<%= meal._id %>/edit" class="edit-btn">Edit</a>
               <button type="submit" class="delete-btn">Delete</button>
             </form>
           </div>

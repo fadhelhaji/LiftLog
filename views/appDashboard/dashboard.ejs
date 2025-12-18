@@ -67,8 +67,12 @@
             <div class="settings-forms">
               <form class="settings-form" action="/profile/toggle-public" method="POST">
                 <div class="form-group checkbox-group">
-                  <input type="checkbox" name="isPublic" id="isPublic" <%=user.isPublic ? "checked" : "" %> />
-                  <label for="isPublic">Make my profile public</label>
+<input
+  type="checkbox"
+  name="isPublic"
+  id="isPublic"
+  <%= user && user.isPublic ? "checked" : "" %>
+/>                  <label for="isPublic">Make my profile public</label>
                 </div>
                 <button class="submit-btn" type="submit">Save</button>
               </form>

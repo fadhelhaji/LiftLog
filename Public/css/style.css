@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Chewy", system-ui;
+  text-decoration: none;
 }
 
 .navbar-container {
@@ -58,6 +59,7 @@ body {
   justify-content: center;
   height: 100px;
   font-family: "Chewy", system-ui;
+  gap: 20px;
 }
 
 .user-card {
@@ -123,6 +125,32 @@ span.goal-label {
   align-items: center;
   gap: 10px;
 }
+
+.items-container {
+  display: flex;
+  flex-direction: column; /* one exercise per row */
+  gap: 20px;              /* space between exercise boxes */
+  padding: 20px;
+}
+
+.item-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 22px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: row; /* 👈 side by side */
+  gap: 12px;           /* space between buttons */
+  align-items: center;
+}
+
 
 
 .log-meal-card,
@@ -274,6 +302,7 @@ label.isPublic {
   background-color: #32CD32;
   border-radius: 5px;
   font-family: inherit;
+  text-decoration: none;
 }
 
 .items-container {
@@ -321,4 +350,37 @@ label.isPublic {
   align-items: center;
   margin-bottom: 12px;
 }
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  width: 90px;
+  height: 38px;
+  font-family: 'Chewy', system-ui;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 
