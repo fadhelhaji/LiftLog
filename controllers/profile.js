@@ -36,7 +36,7 @@ router.delete('/delete-account', async (req, res) => {
     const userId = req.session.user._id;
 
     await Meal.deleteMany({ userId });
-    await Exercise.deleteMany({ userId });
+    await Exercises.deleteMany({ userId });
     await Plan.deleteMany({ userId });
     await User.findByIdAndDelete(userId);
 
