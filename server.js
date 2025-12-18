@@ -20,7 +20,7 @@ const userCtrl = require('./controllers/profile.js')
 
 // Middleware
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 app.use(express.urlencoded({ extended: false })); // this will allow us to see the data being sent in the POST or PUT
 app.use(methodOverride("_method")); // Changes the method based on the ?_method
 app.use(morgan("dev")) // logs the requests as they are sent to our sever in the terminal
