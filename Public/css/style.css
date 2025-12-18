@@ -121,7 +121,8 @@ span.goal-label {
   font-size: 20px;
 }
 
-.sign-in-form {
+.sign-in-form,
+.sign-up-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,7 +132,8 @@ span.goal-label {
 }
 
 #name,
- #password {
+#password,
+#confirmPassword {
   height: 40px;
   width: 200px;
   border-radius: 5px;
@@ -150,4 +152,18 @@ span.goal-label {
   background-color: #32CD32;
   border-radius: 5px;
   font-family: inherit;
+}
+
+input.checkbox {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+}
+
+label.isPublic {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
