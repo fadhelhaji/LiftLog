@@ -26,26 +26,11 @@ router.get('/users/:id', async (req, res) => {
       return res.send('This user’s logs are not public');
     }
 
-    const meals = await Meals.find({ userId: user._id }).populate('userId').sort({ date: 1 });
-
-    let mealsByDay = {};
-    meals.forEach(meal => {
-      const day = meal.date.toISOString().split('T')[0];
-      if (!mealsByDay[day]) mealsByDay[day] = [];
-      mealsByDay[day].push(meal);
-    });
-
-
+    const meals = await Meals.find({ userId: user._id }).populate('userId')
     const exercises = await Exercises.find({ userId: user._id }).populate('userId');
     const plan = await Plan.find({ userId: user._id });
-
-    let exercisesByDay = {};
-    exercises.forEach(ex => {
-      const day = ex.date.toISOString().split('T')[0];
-      if (!exercisesByDay[day]) exercisesByDay[day] = [];
-      exercisesByDay[day].push(ex);
-    });
-    res.render('publicDashboard/publicUserDetails.ejs', { user, exercisesByDay, plan, mealsByDay });
+    
+    res.render('publicDashboard/publicUserDetails.ejs', { user, exercises, meals, plan });
   } catch (error) {
     console.log(error);
   }

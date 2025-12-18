@@ -17,75 +17,66 @@
   <div class="navbar-container">
     <div class="navbar"><%- include('../partials/_navbar.ejs') %></div>
   </div>
-  
+
   <h1 class="log-page-title">
     <span class="log-title"><%= user.name %></span>’s Daily Logs
   </h1>
 
-  <% Object.keys(mealsByDay).forEach((day) => { %>
-    <div class="log-day-section">
-      <h2 class="log-day-title">Date: <%= day %></h2>
+  <% 
+  let totalProtein = 0, totalCarbs = 0, totalFat = 0, totalCalories = 0;
+  meals.forEach(meal => {
+    totalProtein += meal.protein;
+    totalCarbs += meal.carbs;
+    totalFat += meal.fat;
+    totalCalories += meal.calories;
+  });
+  %>
 
-      <% 
-      let totalProtein = 0, totalCarbs = 0, totalFat = 0, totalCalories = 0; 
-      mealsByDay[day].forEach((meal) => {
-        totalProtein += meal.protein;
-        totalCarbs += meal.carbs;
-        totalFat += meal.fat;
-        totalCalories += meal.calories;
-      }); 
-      %>
+  <% plan.forEach((p) => { 
+    let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
+    let CaloriesGoal = p.goal === 'Maintain-weight' ? BMR * 1.2 :
+                       p.goal === 'Lose-weight' ? BMR * 1.2 * 0.8 :
+                       BMR * 1.2 * 1.2;
+    let proteinGoal = 2 * p.weight;
+    let fatGoal = (CaloriesGoal * 0.25) / 9;
+    let carbsGoal = (CaloriesGoal - (proteinGoal * 4 + fatGoal * 9)) / 4;
+    let remainingProtein = Math.max(0, proteinGoal - totalProtein);
+    let remainingCarbs = Math.max(0, carbsGoal - totalCarbs);
+    let remainingFat = Math.max(0, fatGoal - totalFat);
+    let remainingCalories = Math.max(0, CaloriesGoal - totalCalories);
+  %>
+    <div class="log-plan-summary">
+      <h3>Plan: <%= p.goal %></h3>
+      <p>Calories: <span class="remainingCalories"><%= Math.round(totalCalories) %></span> / <span class="totalCalories"><%= Math.round(CaloriesGoal) %></span> | Remaining: <%= Math.round(remainingCalories) %></p>
+      <p>Protein: <span class="remainingProtein"><%= totalProtein %></span> / <span class="totalProtein"><%= Math.round(proteinGoal) %></span> | Remaining: <%= Math.round(remainingProtein) %> g</p>
+      <p>Carbs: <span class="remainingCarbs"><%= totalCarbs %></span> / <span class="totalCarbs"><%= Math.round(carbsGoal) %></span> | Remaining: <%= Math.round(remainingCarbs) %> g</p>
+      <p>Fat: <span class="remainingFat"><%= totalFat %></span> / <span class="totalFat"><%= Math.round(fatGoal) %></span> | Remaining: <%= Math.round(remainingFat) %> g</p>
+    </div>
+  <% }) %>
 
-      <% plan.forEach((p) => { 
-        let BMR = 10 * p.weight + 6.25 * p.height - 5 * p.age + 5;
-        let CaloriesGoal = p.goal === 'Maintain-weight' ? BMR * 1.2 :
-                           p.goal === 'Lose-weight' ? BMR * 1.2 * 0.8 :
-                           BMR * 1.2 * 1.2;
-        let proteinGoal = 2 * p.weight;
-        let fatGoal = (CaloriesGoal * 0.25) / 9;
-        let carbsGoal = (CaloriesGoal - (proteinGoal * 4 + fatGoal * 9)) / 4;
-        let remainingProtein = Math.max(0, proteinGoal - totalProtein);
-        let remainingCarbs = Math.max(0, carbsGoal - totalCarbs);
-        let remainingFat = Math.max(0, fatGoal - totalFat);
-        let remainingCalories = Math.max(0, CaloriesGoal - totalCalories);
-      %>
-        <div class="log-plan-summary">
-          <h3>Plan: <%= p.goal %></h3>
-          <p>Calories: <span class="remainingCalories"><%= Math.round(totalCalories) %></span> / <span class="totalCalories"><%= Math.round(CaloriesGoal) %></span> | Remaining: <%= Math.round(remainingCalories) %></p>
-          <p>Protein: <span class="remainingProtein"><%= totalProtein %></span> / <span class="totalProtein"><%= Math.round(proteinGoal) %></span> | Remaining: <%= Math.round(remainingProtein) %> g</p>
-          <p>Carbs: <span class="remainingCarbs"><%= totalCarbs %></span> / <span class="totalCarbs"><%= Math.round(carbsGoal) %></span> | Remaining: <%= Math.round(remainingCarbs) %> g</p>
-          <p>Fat: <span class="remainingFat"><%= totalFat %></span> / <span class="totalFat"><%= Math.round(fatGoal) %></span> | Remaining: <%= Math.round(remainingFat) %> g</p>
+  <div class="log-meals-container">
+    <h3>Meals:</h3>
+    <% meals.forEach(meal => { %>
+      <div class="log-meal-card">
+        <span class="log-meal-name"><%= meal.mealName %></span>
+        <span class="log-meal-info">
+          Protein: <%= meal.protein %>g | Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g | Calories: <%= meal.calories %>Kcal
+        </span>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="log-exercises-container">
+      <h3>Exercises:</h3>
+      <% exercises.forEach(ex => { %>
+        <div class="log-exercise-card">
+          <span class="log-exercise-name"><%= ex.exerciseName %></span>
+          <span class="log-exercise-info">
+            Muscle target: <%= ex.muscleName %> | Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>kg
+          </span>
         </div>
       <% }) %>
+  </div>
 
-      <h3>Meals:</h3>
-      <div class="log-meals-container">
-        <% mealsByDay[day].forEach((meal) => { %>
-          <div class="log-meal-card">
-            <span class="log-meal-name"><%= meal.mealName %></span>
-            <span class="log-meal-info">
-              Protein: <%= meal.protein %>g | Carbs: <%= meal.carbs %>g | Fat: <%= meal.fat %>g | Calories: <%= meal.calories %>Kcal
-            </span>
-          </div>
-        <% }) %>
-      </div>
-
-      <h3>Exercises:</h3>
-      <div class="log-exercises-container">
-        <% if (exercisesByDay[day]) { %>
-          <% exercisesByDay[day].forEach((ex) => { %>
-            <div class="log-exercise-card">
-              <span class="log-exercise-name"><%= ex.exerciseName %></span>
-              <span class="log-exercise-info">
-                Muscle target: <%= ex.muscleName %> | Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>kg
-              </span>
-            </div>
-          <% }) %>
-        <% } else { %>
-          <p>No exercises logged for this day.</p>
-        <% } %>
-      </div>
-  <% }) %>
 </body>
-
 </html>

@@ -20,10 +20,6 @@ const userExercise = new Schema ({
     weight: {
         type: Number,
     },
-    date: { 
-        type: Date, 
-        default: Date.now,
-     },
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User",
