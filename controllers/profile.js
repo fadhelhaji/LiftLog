@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Meal = require('../models/meals');
 const Plan = require('../models/userPlans');
-const Exercise = require('../models/exercises');
+const Exercises = require('../models/exercises');
 
 router.get('/', async (req, res) => {
   try {
