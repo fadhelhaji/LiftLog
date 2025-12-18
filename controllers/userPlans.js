@@ -12,7 +12,6 @@ router.post('/new', async (req, res) => {
   try {
     req.body.userId = req.session.user._id;
     const newPlan = await Plan.create(req.body)
-
     res.redirect('/')
   } catch (error) {
     console.error(error)

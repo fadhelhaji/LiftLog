@@ -4,7 +4,7 @@ const { model, Schema } = mongoose
 const planSchema = new Schema({
   goal: {
     type: String,
-    enum: ['maintainWeight', 'loseWeight', 'gainWeight'],
+    enum: ['Maintain-weight', 'Lose-weight', 'Gain-weight'],
     required: true,
   },
   age: {
