@@ -13,10 +13,13 @@
 </head>
 
 <body>
-  <% if (user) { %> <%- include('../partials/_navbar.ejs') %>
-      <% } else { %>
-        <p>No user logged in.</p>
-        <% } %>
+  <div class="navbar-container">
+
+    <div class="navbar"><% if (user) { %> <%- include('../partials/_navbar.ejs') %>
+        <% } else { %>
+          <p>No user logged in.</p>
+          <% } %></div>
+  </div>
 
           <div class="profile-container">
             <h1 class="profile-title">Your Plan</h1>
@@ -71,7 +74,7 @@
               </form>
 
               <form class="settings-form delete-form" action="/profile/delete-account?_method=DELETE" method="POST">
-                <button class="submit-btn delete-btn" type="submit">
+                <button class="delete-btn" type="submit">
                   Delete My Account
                 </button>
               </form>

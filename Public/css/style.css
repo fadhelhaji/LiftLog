@@ -68,6 +68,10 @@ body {
   font-family: inherit;
 }
 
+.user-card:hover {
+  transform: translateY(-10px);
+}
+
 .user-card-link {
   text-decoration: none;
 }
@@ -142,6 +146,7 @@ span.goal-label {
 .back-dashboard-link {
   display: flex;
   margin-top: 80px;
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -152,6 +157,7 @@ span.goal-label {
   background-color: #32CD32;
   border-radius: 5px;
   font-family: inherit;
+  cursor: pointer;
 }
 
 input.checkbox {
@@ -166,4 +172,57 @@ label.isPublic {
   align-items: center;
   gap: 10px;
   cursor: pointer;
+}
+
+.plan-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 40px;
+}
+
+.plan-page-form .plan-form-group,
+.plan-page-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.plan-page-form input,
+.plan-page-form select {
+  width: 250px;
+  padding: 6px;
+}
+
+.plan-submit-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #32CD32;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+}
+
+.delete-btn {
+  margin-top: 40px;
+  height: 80px;
+  width: 180px;
+  font-size: 30px;
+  background-color: #32CD32;
+  border-radius: 5px;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: red;
 }
