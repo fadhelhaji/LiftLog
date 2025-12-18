@@ -132,6 +132,10 @@ span.goal-label {
   font-size: 20px;
 }
 
+.log-exercises-container p{
+  margin: -30px 0;
+}
+
 .sign-in-form,
 .sign-up-form {
   display: flex;
