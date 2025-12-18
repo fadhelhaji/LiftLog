@@ -51,14 +51,10 @@
       %>
         <div class="log-plan-summary">
           <h3>Plan: <%= p.goal %></h3>
-          <p>Calories: <span class="remainingCalories"><%= Math.round(totalCalories) %></span> / 
-             <span class="totalCalories"><%= Math.round(CaloriesGoal) %></span> | Remaining: <%= Math.round(remainingCalories) %></p>
-          <p>Protein: <span class="remainingProtein"><%= totalProtein %></span> / 
-             <span class="totalProtein"><%= Math.round(proteinGoal) %></span> | Remaining: <%= Math.round(remainingProtein) %> g</p>
-          <p>Carbs: <span class="remainingCarbs"><%= totalCarbs %></span> / 
-             <span class="totalCarbs"><%= Math.round(carbsGoal) %></span> | Remaining: <%= Math.round(remainingCarbs) %> g</p>
-          <p>Fat: <span class="remainingFat"><%= totalFat %></span> / 
-             <span class="totalFat"><%= Math.round(fatGoal) %></span> | Remaining: <%= Math.round(remainingFat) %> g</p>
+          <p>Calories: <span class="remainingCalories"><%= Math.round(totalCalories) %></span> / <span class="totalCalories"><%= Math.round(CaloriesGoal) %></span> | Remaining: <%= Math.round(remainingCalories) %></p>
+          <p>Protein: <span class="remainingProtein"><%= totalProtein %></span> / <span class="totalProtein"><%= Math.round(proteinGoal) %></span> | Remaining: <%= Math.round(remainingProtein) %> g</p>
+          <p>Carbs: <span class="remainingCarbs"><%= totalCarbs %></span> / <span class="totalCarbs"><%= Math.round(carbsGoal) %></span> | Remaining: <%= Math.round(remainingCarbs) %> g</p>
+          <p>Fat: <span class="remainingFat"><%= totalFat %></span> / <span class="totalFat"><%= Math.round(fatGoal) %></span> | Remaining: <%= Math.round(remainingFat) %> g</p>
         </div>
       <% }) %>
 
