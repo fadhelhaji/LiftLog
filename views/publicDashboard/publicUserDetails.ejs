@@ -19,7 +19,7 @@
   </div>
   
   <h1 class="log-page-title">
-    <%= user.name %>’s Daily Logs
+    <span class="log-title"><%= user.name %></span>’s Daily Logs
   </h1>
 
   <% Object.keys(mealsByDay).forEach((day) => { %>
@@ -71,19 +71,20 @@
       </div>
 
       <h3>Exercises:</h3>
-      <% Object.keys(exercisesByDay).forEach((dayEx) => { %>
-        <h4>Date: <%= dayEx %></h4>
-        <div class="log-exercises-container">
-          <% exercisesByDay[dayEx].forEach((ex) => { %>
+      <div class="log-exercises-container">
+        <% if (exercisesByDay[day]) { %>
+          <% exercisesByDay[day].forEach((ex) => { %>
             <div class="log-exercise-card">
               <span class="log-exercise-name"><%= ex.exerciseName %></span>
-              <span class="log-exercise-info">Muscle target: <%= ex.muscleName %> | Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>kg</span>
+              <span class="log-exercise-info">
+                Muscle target: <%= ex.muscleName %> | Sets: <%= ex.sets %> | Reps: <%= ex.reps %> | Weight: <%= ex.weight %>kg
+              </span>
             </div>
           <% }) %>
-        </div>
-      <% }) %>
-
-    </div>
+        <% } else { %>
+          <p>No exercises logged for this day.</p>
+        <% } %>
+      </div>
   <% }) %>
 </body>
 

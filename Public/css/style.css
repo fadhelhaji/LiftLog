@@ -3,6 +3,7 @@ body {
   flex-direction: column;
   font-family: "Chewy", system-ui;
 }
+
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -86,6 +87,7 @@ span.goal {
   font-size: 30px;
   font-family: inherit;
 }
+
 span.goal-label {
   color: white;
   font-size: 25px;
@@ -277,4 +279,9 @@ label.isPublic {
   justify-content: center;
   margin-top: 50px;
   font-size: 30px;
+}
+
+.log-title,
+.ifUser {
+  color: #004aad;
 }
