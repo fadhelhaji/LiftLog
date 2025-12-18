@@ -48,6 +48,11 @@ body {
   justify-content: center;
 }
 
+.explore-msg {
+  color: #004aad;
+  font-size: 30px;
+}
+
 .users-container {
   display: flex;
   justify-content: center;
